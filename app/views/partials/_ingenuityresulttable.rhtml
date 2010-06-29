@@ -1,0 +1,29 @@
+<!-- table head -->
+<% if (@bioentry.ingenuityresults.length > 0)%>
+<h2> <a href="http://www.ingenuity.com/products/pathways_analysis.html" >Ingenuity Pathway Analysis </a> Results </h2>
+<table class="data" >
+	<tr class="head">
+		<th>Accession </th>
+		<th>Hours <br/> Post <br/> Fertilization</th>
+		<th>Gene <br/> Name </th>
+		<th>Cellular <br/> Location </th>
+		<th>Signaling <br/> Type </th>
+		<th>Pathway </th>
+	</tr>
+	<!-- table rows --> 
+	<% rowclass = ["even", "odd"]%>
+	<% i = 0 %>
+	<% for row in @bioentry.ingenuityresults%>
+	<tr align="center" class="<%= rowclass[i % 2] %>">
+		<td ><%=row.identifier%></td>
+		<td > <%= row.hpf %></td>
+		<td> <%= row.gene_name %></td>
+		<td> <%= row.location %></td>
+		<td> <%= row.signal_type %></td>
+		<td align="left"> <%= row.pathway %></td>
+	</tr>
+	<% i += 1 %>
+	<% end %>
+</table>
+
+<%end%>

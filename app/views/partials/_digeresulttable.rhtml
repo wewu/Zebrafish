@@ -1,0 +1,38 @@
+<!-- table head -->
+<% if (@bioentry.digeresults.length > 0)%>
+<h2> DiGE Results </h2>
+<table class="data"  >
+	<tr >
+		<th>Spot <br/> Number</th>
+		<th>Hours <br/> Post <br/> Fertilization</th>
+		<th>Protein <br/> Score</th>
+		<th>PI</th>
+		<th>Mw</th>
+		<th>Peptide <br/> Count</th>
+		<th>Fold <br/> Change</th>
+		<th>Coordinates <br/> 
+			<font size="-1" > (X, Y)</font> </th>
+	</tr>
+	<!-- table rows --> 
+	<% rowclass = ["even", "odd"]%>
+	<% i = 0 %>
+	<% for spot in @bioentry.digeresults%>
+	<tr align="center" class="<%= rowclass[i % 2] %>">
+		<td ><%=spot.spot_num%></td>
+		<td ><%=spot.hpf%></td>
+		<td ><%=spot.protein_score%></td>
+		<td ><%=spot.protein_pi%></td>
+		<td ><%=spot.protein_mw%></td>
+		<td ><%=spot.pep_count%></td>
+ 		<% if (spot.fold_change.to_i < 0)%>
+		<td ><font color="red" > <%=spot.fold_change%> </font></td>
+		<%else%>
+		<td ><font color="green" > <%=spot.fold_change%> </font></td>
+		<% end %>
+		<td >(<%=spot.xcoor%>, <%=spot.ycoor%>)</td>
+	</tr>
+	<% i += 1 %>
+	<% end %>
+</table>
+
+<%end%>

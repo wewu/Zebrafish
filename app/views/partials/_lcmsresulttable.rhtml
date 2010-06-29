@@ -1,0 +1,28 @@
+<!-- table head -->
+<% if (@bioentry.lcmsresults.length > 0)%>
+<h2>LC-MSMS Results</h2>
+<table class="data" >
+	<tr class="head">
+		<th>Hours <br/> Post <br/> Fertilization</th>
+		<th>Protein Group <br/> p-value</th>
+		<th>Protein <br/> p-value</th>
+		<th>% Coverage </th>
+		<th>Unique <br/> Peptides</th>
+		<th>Total <br/> Peptides</th>
+	</tr>
+	<!-- table rows --> 
+	<% rowclass = ["even", "odd"]%>
+	<% i = 0 %>
+	<% for row in @bioentry.lcmsresults%>
+	<tr align="center" class="<%= rowclass[i % 2] %>">
+		<td ><%= row.hpf %></td>
+		<td ><%= row.protein_group_prob %></td>
+		<td ><%= row.protein_prob %></td>
+		<td ><%= row.percent_coverage %></td>
+		<td ><%= row.num_unique_peptides %></td>
+		<td ><%= row.total_num_peptides %></td>
+	</tr>
+	<% i += 1 %>
+	<% end %>
+</table>
+<%end%>

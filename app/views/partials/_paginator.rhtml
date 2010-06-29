@@ -1,0 +1,11 @@
+<div id="paginator" class="counter">
+   Displaying <%= paginator.current.first_item %>
+   - <%= paginator.current.last_item %>
+   of <%= paginator.item_count %>    
+
+   <%= link_to(h('< Previous'), {:params => params.merge('page' => paginator.current.previous)}, 
+                 {:post => true})  + " | " if paginator.current.previous %>
+  <%=pagination_links(paginator, {:params => params.merge('page' => paginator.current.previous)}, :window_size => 4) %>
+ 
+   <%= " | " + link_to(h('Next >'), {:params => params.merge('page' => paginator.current.next)}, {:post => true}) if paginator.current.next %>
+ </div>

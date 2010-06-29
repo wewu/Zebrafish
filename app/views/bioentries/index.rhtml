@@ -1,0 +1,54 @@
+<div id="pub">
+Recently published <a href="http://www.mcponline.org/cgi/content/short/7/5/981"> Molecular and Cellular Protoemics 7:981-994, 2008</a> 
+</div>
+<br/>	<h3>Show me some results! </h3>
+
+<%= link_to 'ALL', :controller => 'bioentries' , :action => 'list', :method => :post %>
+&nbsp; &nbsp; <%= link_to 'LC MS/MS', :controller => 'bioentries' , :action => 'lcms_entries',:method => :post %>
+&nbsp; &nbsp; <%= link_to 'DiGE', :controller => 'bioentries' , :action => 'dige_entries', :method => :post %>
+&nbsp; &nbsp; <%= link_to 'GO annotated', :controller => 'bioentries' , :action => 'gofunc_entries', :method => :post %>
+&nbsp; &nbsp; <%= link_to 'Ingenuity annotated', :controller => 'bioentries' , :action => 'ingenuity_entries', :method => :post %>
+</font>
+</p>
+
+</hr/>
+<p>
+<h2>Search Entries </h2>
+</p>
+<p>
+Use the text field below to search our sequence annotation.
+</p>
+<p>
+
+<%= form_tag :controller => "bioentries" , :action => 'keywords' %>
+<br/><%= text_area_tag :kw , "kinase", :size => "25x10" %>
+<br/><%= submit_tag "Send Query!" %>
+<%= end_form_tag %>
+
+</p>
+<p>
+	<h3> Help </h3>
+	Prepending <font size="+1"><b>"+"</b> </font> or <font size="+1"><b>"-"</b></font> 
+	will require the word to be present or absent, respectively. 
+	(e.g.<b> +kinase +inhibitor</b>)
+
+	<br/>Enclose phrases in double quotes  <font size="+1"><b>"..." </b></font> (e.g. <b>"hypothetical protein"</b>)
+	<br/>Wild-cards are allowed as suffixes using a <font size="+1"><b>"*"</b></font> (e.g. <b>ribo*</b>)
+	<br/>Case does not matter.
+	<br/><b>More Examples:</b> 
+	<ul>
+		<li>A list of IPI accessions</li>
+		<li>A list of other database accessions (GenBank, VEGA, UniGene, UniProt, ENSEMBL, etc.)</li>
+		<li>GO IDs</li>
+		<li>Gene names and abbreviations</li>
+		<li>Functional categories</li>
+	</ul>
+</p>
+<p><em>*Sequence similarity searches are <font color="red" >not</font> available. </em></p>
+
+<hr />
+
+	<h2>Data Downloads</h2>
+	<p>
+	All of the RAW LC-MS and DiGE experimental data will be available on publication of the manuscript. 
+	</p> 

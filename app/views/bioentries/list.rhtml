@@ -1,0 +1,29 @@
+<h1>Listing Entries</h1>
+
+<table class="data">
+  <tr class="head">
+	<th > Accession </th>
+	<th> DiGE <br/> Results </th>
+	<th> LC-MS/MS <br/> Results </th>
+	<th> Ingenuity <br/> Results </th>
+	<th> GO <br/> Assignments </th>
+	<th align="left"> Description </th>
+  </tr>
+  
+<% rowclass = ["even", "odd"]%>
+<% i = 0 %>
+<% for row in @bioentries %>
+  <tr align="center" class="<%= rowclass[i % 2] %>">
+    <td><%= link_to row.accession, :action => 'show', :id => row %></td>
+	<td><% if row.digeresults.length > 0  %><font color="green">Y</font>  <% else %>	<font color="red">N</font><% end %></td>
+	<td><% if row.lcmsresults.length > 0  %><font color="green">Y</font>  <% else %>	<font color="red">N</font><% end %></td>
+	<td><% if row.ingenuityresults.length > 0  %><font color="green">Y</font>  <% else %>	<font color="red">N</font><% end %></td>
+	<td><% if row.goassignments.length > 0  %><font color="green">Y</font>  <% else %>	<font color="red">N</font><% end %></td>
+	<td align="left"><%= row.description %></td>
+  </tr>
+  <% i += 1 %>
+<% end %>
+</table>
+<p>
+<%= render_partial "partials/paginator"  , @bioentry_pages%>
+</p>

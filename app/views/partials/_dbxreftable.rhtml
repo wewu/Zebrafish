@@ -1,0 +1,27 @@
+<!-- table head -->
+<br/>
+<% if @bioentry.dbxrefs %>
+<h2 > External Database References</h2> 
+<table class="data" >
+	<tr class="head">
+		<th>Database Name</th>
+		<th>Accession</th>
+	</tr>
+	<!-- table rows --> 
+	<% rowclass = ["even", "odd"]%>
+	<% i = 0 %>
+	<% for row in @bioentry.dbxrefs%>
+	<tr class="<%= rowclass[i % 2] %>">
+		<td ><%= row.dbname %></td>
+		<%if row.biodatabase.authority %>
+		<td ><%=link_to( row.accession, (row.biodatabase.authority + row.accession)   )%></td>
+		<%else%>
+		<td><%= row.accession %></td>
+		<%end%>
+	</tr>
+	<% i += 1 %>
+	<% end %>
+</table>
+<%else%>
+No DBXREFS
+<%end%>

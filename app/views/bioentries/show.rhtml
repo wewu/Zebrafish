@@ -1,0 +1,53 @@
+<div id="summary">
+	<!-- General protein information -->
+	<p>
+		<font size="+2"><b><%= link_to(@bioentry.accession,(@bioentry.biodatabase.authority + @bioentry.accession)) %></b></font>
+		<font size="+1"><br/><%= @bioentry.description %></font>
+	</p>
+</div>
+<hr>
+<div id="geneinfo">
+	<!-- General information about the associated gene -->
+</div>
+
+<% if @bioentry.dbxrefs.length > 0 %>
+<div id="xrefs">
+	<!-- The cross reference information -->
+	<%= render :partial => "partials/dbxreftable"%>
+</div>
+<% end %>
+
+<% if  @bioentry.lcmsresults.length > 0 %>
+<hr />
+<div id="lc">
+<%= render :partial => "partials/lcmsresulttable" , :locals => {:rows => @bioentry.lcmsresults }%>
+<!-- LS MSMS experimental results -->
+</div>
+<% end %>
+
+<% if @bioentry.digeresults.length > 0 %> 
+<hr />
+<div id="dige">
+<%= render :partial => "partials/digeresulttable", :locals => {:rows => @bioentry.digeresults }%>
+<!-- DiGE experimental results with link to Gel or image if there is a spot -->
+</div>
+<% end %>
+
+<% if @bioentry.ingenuityresults.length > 0 %> 
+<hr />
+<div id="ingenuity">
+<%= render :partial => "partials/ingenuityresulttable", :locals => {:rows => @bioentry.ingenuityresults }%>
+<!-- DiGE experimental results with link to Gel or image if there is a spot -->
+</div>
+<% end %>
+
+<% if @bioentry.goassignments.length > 0 %> 
+<hr />
+<div id="goassignments">
+<%= render :partial => "partials/goresulttable", :locals => {:rows => @bioentry.goassignments }%>
+<!-- GO Annotation Assigments from GOA Project-->
+</div>
+<% end %>
+
+
+<!-- link to previous page -->
